@@ -1,0 +1,10 @@
+#navbar{
+    width: 100%;
+}
+#nav-body{
+    display: flex;
+    padding: 10px;
+    padding-left: 100px;
+
+    /* border: 2px solid red; */
+}
