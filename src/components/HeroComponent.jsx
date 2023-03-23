@@ -1,11 +1,12 @@
 import React from 'react'
 import "../styles/HeroComponent.css";
 import bulb from "../img/bulb-hand.png";
+import wave from "../img/waves.png";
 
 const HeroComponent = () => {
   return (
     <>
-        <div id="hero">
+        <div style={{backgroundImage: `url(${wave})`, backgroundRepeat:'no-repeat', backgroundPosition: 'bottom'}} id="hero">
             <div id="hero-body">
                 <div id="hero-title">
                     <div id="hero-heading">
