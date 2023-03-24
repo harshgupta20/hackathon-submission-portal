@@ -1,0 +1,84 @@
+#uplaod{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#upload-body{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    margin: 30px;
+    /* border: 2px solid red; */
+}
+#up-h2{
+    font-size: 35px;
+}
+#up-form{
+    margin-top: 20px;
+}
+#up-title, #up-desc, #up-img, #up-hackName, #up-date, #up-github, #up-link{
+    margin: 20px 0;
+}
+#up-input{
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px;
+    font-size: larger;
+    border: 2px solid rgb(214, 214, 214);
+    border-radius: 10px;
+    outline: none;
+}
+#up-input3{
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px;
+    font-size: larger;
+    border: 2px solid rgb(214, 214, 214);
+    border-radius: 10px;
+    outline: none;
+}
+#up-date{
+    display: flex;
+    justify-content: space-between;
+}
+#up-startdate{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+#up-enddate{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+#up-img-p4{
+    color: grey;
+    margin-top: 10px;
+}
+#up-label{
+        width: 100%;
+        height: fit-content;
+        color: rgb(214, 214, 214);
+}
+#up-input6{
+    padding: 10px;
+    color: grey;
+    border: 2px solid rgb(214, 214, 214);
+    outline: none;
+    width: 80%;
+    font-size: large;
+    margin-top: 10px;
+}
+#up-btn{
+    background-color: #44924C;
+    color: #fff;
+    font-size: large;
+    padding: 20px 30px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
