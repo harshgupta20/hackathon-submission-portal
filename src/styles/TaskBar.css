@@ -18,8 +18,6 @@
     margin: 0 20px;
     cursor: pointer;
 
-    color: grey;
-    border-bottom: 3px solid #44924C;
 }
 #task-filter{
     display: flex;

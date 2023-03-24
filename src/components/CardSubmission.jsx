@@ -3,7 +3,7 @@ import "../styles/CardSubmission.css";
 
 import image1 from "../img/Image.png";
 
-const CardSubmission = () => {
+const CardSubmission = ({status}) => {
   return (
     <>
         <div id="card">

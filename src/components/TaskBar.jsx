@@ -2,15 +2,16 @@ import React from 'react';
 import "../styles/TaskBar.css";
 import { IoChevronDown } from "react-icons/io5";
 import { MdSearch } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
-const TaskBar = () => {
+const TaskBar = ({status}) => {
   return (
     <>
       <div id="task">
         <div id="task-body">
           <div id="task-submit">
-            <button id="task-btn1">All Submissions</button>
-            <button id="task-btn2">Favourite Submissions</button>
+            <Link to="/"><button id="task-btn1" style={{color:!status ? '#000' : 'grey', borderBottom: !status && '3px solid #44924C' }}>All Submissions</button></Link>
+            <Link to="/favouriteSubmission"><button style={{color:status ? '#000' : 'grey', borderBottom: status && '3px solid #44924C' }} id="task-btn2">Favourite Submissions</button></Link>
           </div>
           <div id="task-filter">
             <label id="task-label" htmlFor="">
