@@ -5,6 +5,9 @@ import Upload from "../img/Upload.png";
 
 const UploadForm = () => {
 
+
+    
+    
     const [title, setTitle] = useState("")
     const [summary, setSummary] = useState("")
     const [desc, setDesc] = useState("")
@@ -15,19 +18,13 @@ const UploadForm = () => {
     const [github, setGithub] = useState("")
     const [link, setLink] = useState("")
 
+  
+    
     const handleSubmit = () => {
         if(title && summary && desc && image && hackName && hackstart && hackend && github && link){
-            let data = JSON.parse(localStorage.getItem('usersData')) || [];
-            console.log(data);
-            if(data.length === 0){
-                data.push({title:title, summary:summary, desc:desc});
-                console.log("lol");
-            }else{
-               console.log(data);
-                data.push({title:title, summary:summary, desc:desc});
-                console.log(data)
-            }
-            localStorage.setItem('userData', JSON.stringify(data));
+            alert("This feature yet to be implemented");
+        }else{
+            alert("Fields Can't be empty");
         }
 
     }
