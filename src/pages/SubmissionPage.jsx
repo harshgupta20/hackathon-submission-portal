@@ -1,61 +1,135 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../styles/SubmissionPage.css";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdLink } from "react-icons/md";
 import { RiPencilFill, RiDeleteBin6Fill, RiGithubFill } from "react-icons/ri";
 import image1 from "../img/image1.png";
+import { useParams } from 'react-router-dom';
+
+// MUI
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 const SubmissionPage = () => {
-  return (
-    <>
-       <div id="sub">
-        <div id="sub-body">
-            <div id="sub-title">
-                <div id="sub-heading">
-                    <img id="sub-head-img" src={image1} alt="" />
-                    <p id="sub-head-p">InterviewMe</p>
-                </div>
-                <p id="sub-title-p">Built with GPT-3, React, and Flask. Practice interviews with AI and ace your next interview.</p>
-                <div id="sub-info">
-                    <AiFillStar id="sub-favourite"/>
-                    <p>|</p>
-                    <p id="sub-date" style={{display:'flex', alignItems:'center', textAlign:'center'}}><AiOutlineCalendar style={{marginRight:'10px'}}/>20 March</p>
-                </div>
-            </div>
-            <div id="sub-btn">
-                <div id="sub-group-btn">
-                    <button id="sub-btn-edit" style={{display:'flex', alignItems:'center'}}><RiPencilFill style={{marginRight:'10px'}}/>Edit</button>
-                    <button id="sub-btn-delete" style={{display:'flex', alignItems:'center'}} ><RiDeleteBin6Fill  style={{marginRight:'10px'}}/>Delete</button>
-                </div>
-            </div>
-        </div>
-       </div>
+
+    const params = useParams();
+    const { id } = params;
+
+    const [cardData, setCardData] = useState();
+
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const deleteCard = () => {
+        var data = localStorage.getItem('data');
+        data = JSON.parse(data);
+        data.splice(id, 1);
+        data = JSON.stringify(data);
+        localStorage.setItem('data', data);
+        handleClose();
+    }
 
 
-       <div id="detail">
-        <div id="detail-desc">
-            <p id="detail-desc-title">Description</p>
-            <p>Lorem ipsum dolor sit amet consectetur. Lacus sit aliquam vivamus sodales a integer justo elit. Mattis urna non parturient est non faucibus pretium morbi. Mattis condimentum arcu sapien nunc semper in laoreet amet cursus. At purus consectetur orci morbi at. Gravida consectetur nunc in quis vitae egestas. Fermentum pellentesque ullamcorper nisl massa penatibus condimentum non imperdiet. Porttitor a hendrerit pellentesque enim mus congue. Vitae interdum fusce duis ac posuere in aliquam risus aenean. Mi aliquet viverra ipsum lacus condimentum tincidunt. In bibendum imperdiet nullam eget tincidunt. Ut lorem id enim interdum lobortis aliquam risus elementum aliquet. Placerat fusce proin diam sollicitudin netus tincidunt sit ultricies. Varius convallis ultrices fermentum in commodo ut posuere. Lacus luctus lacus consequat dolor.
+    useEffect(() => {
+        var data = localStorage.getItem('data');
+        data = JSON.parse(data);
+        console.log("chala");
+        console.log(data);
+        setCardData(data[id]);
+    }, [])
 
-Lacus vulputate molestie mattis penatibus risus quam elit gravida auctor. Eget morbi maecenas nam in. Felis urna non id adipiscing sed cursus nec arcu. Egestas placerat blandit sed quis sed vitae. Porta at ac turpis gravida leo. Ipsum in laoreet facilisi arcu. Proin vulputate mi viverra dignissim sollicitudin interdum ultrices. Habitant eget dapibus pharetra blandit quis sagittis pulvinar fames vel.
+    // console.log(cardData);
+    return (
+        <>
+            {
+                cardData ?
+                    <>
+                        <div id="sub">
+                            <div id="sub-body">
+                                <div id="sub-title">
+                                    <div id="sub-heading">
+                                        <img id="sub-head-img" src={cardData.image} alt="image" />
+                                        <p id="sub-head-p">{cardData.title}</p>
+                                    </div>
+                                    <p id="sub-title-p">{cardData.summary}</p>
+                                    <div id="sub-info">
+                                        <AiFillStar id="sub-favourite" />
+                                        <p>|</p>
+                                        <p id="sub-date" style={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}><AiOutlineCalendar style={{ marginRight: '10px' }} />{cardData.hackstart}</p>
+                                    </div>
+                                </div>
+                                <div id="sub-btn">
+                                    <div id="sub-group-btn">
+                                        <button id="sub-btn-edit" style={{ display: 'flex', alignItems: 'center' }}><RiPencilFill style={{ marginRight: '10px' }} />Edit</button>
+                                        <button id="sub-btn-delete" onClick={handleClickOpen} style={{ display: 'flex', alignItems: 'center' }} ><RiDeleteBin6Fill style={{ marginRight: '10px' }} />Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-Sit gravida cursus ligula fames lacus. Bibendum lectus nunc dapibus dui lectus velit porta. Sit id elementum urna at ut lorem aliquet. Pharetra sit malesuada tellus eget urna ultrices lectus et cursus. Bibendum leo id consectetur vel lectus mi urna in diam. Egestas metus enim elementum turpis felis. Leo ultrices adipiscing viverra ac. Maecenas a odio ac velit in tortor faucibus quam quis. Ut sapien auctor lacus pretium nec eu sed sit. Nulla quis sed massa maecenas.</p>
-        </div>
-        <div id="detail-info">
-            <div id="detail-venue">
-                <p id="detail-v-title">Hackathon</p>
-                <p id="detail-v-name">Prestige Interview Challenge</p>
-                <p id="detail-v-date" style={{display:'flex', alignItems:'center'}}><AiOutlineCalendar/>24 Feb 2023 - 24 March 2023</p>
-            </div>
-            <div id="detail-links">
-                <button id="detail-btn-github" style={{display:'flex', alignItems:'center'}}><RiGithubFill style={{color:'#666666', fontSize:'large', paddingRight:'3px'}}/>GitHub Repository</button>
-                <button id="detail-btn-link" style={{display:'flex', alignItems:'center'}}><MdLink style={{color:'#666666', fontSize:'large', paddingRight:'3px'}}/>Other Link</button>
-            </div>
-        </div>
-       </div>
-    </>
-  )
+
+                        <div id="detail">
+                            <div id="detail-desc">
+                                <p id="detail-desc-title">Description</p>
+                                <p>{cardData.desc}</p>
+                            </div>
+                            <div id="detail-info">
+                                <div id="detail-venue">
+                                    <p id="detail-v-title">Hackathon</p>
+                                    <p id="detail-v-name">Prestige Interview Challenge</p>
+                                    <p id="detail-v-date" style={{ display: 'flex', alignItems: 'center' }}><AiOutlineCalendar />{cardData.hackstart} - {cardData.hackend}</p>
+                                </div>
+                                <div id="detail-links">
+                                    <a href={cardData.github} rel="noreferrer" target="_blank">
+
+                                        <button id="detail-btn-github" style={{ display: 'flex', alignItems: 'center' }}><RiGithubFill style={{ color: '#666666', fontSize: 'large', paddingRight: '3px' }} />GitHub Repository</button>
+                                    </a>
+                                    <a href={cardData.link} rel="noreferrer" target="_blank">
+
+                                        <button id="detail-btn-link" style={{ display: 'flex', alignItems: 'center' }}><MdLink style={{ color: '#666666', fontSize: 'large', paddingRight: '3px' }} />Other Link</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* DIALOG to Delete */}
+                        <Dialog
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <DialogTitle id="alert-dialog-title">
+                                {`Delete "${cardData.title}"`}
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    This action is irreversible. Are you sure you want to delete this model?
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose}>Cancel</Button>
+                                <Button onClick={deleteCard} color="error" variant='contained' autoFocus>
+                                    Delete
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                    </> : "Loading..."
+            }
+
+
+
+
+
+        </>
+    )
 }
 
 export default SubmissionPage

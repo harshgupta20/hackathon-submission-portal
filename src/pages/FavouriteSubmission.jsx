@@ -8,7 +8,7 @@ const FavouriteSubmission = () => {
     <>
         <HeroComponent/>
         <TaskBar status="true"/>
-        <CardSubmission/>
+        <CardSubmission fav="true"/>
     </>
   )
 }

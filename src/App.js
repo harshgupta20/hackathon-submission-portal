@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/uploadSubmission" element={<UploadPage/>}/>
         <Route path="/favouriteSubmission" element={<FavouriteSubmission />} />
-        <Route path='/SubmissionPage' element={<SubmissionPage/>} />
+        <Route path='/SubmissionPage/:id' element={<SubmissionPage/>} />
       </Routes>
       </Router>
     </>
