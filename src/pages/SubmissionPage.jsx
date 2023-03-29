@@ -92,12 +92,9 @@ const SubmissionPage = () => {
     useEffect(() => {
         var data = localStorage.getItem('data');
         data = JSON.parse(data);
-        console.log("chala");
-        console.log(data);
         setCardData(data[id]);
     }, [])
 
-    // console.log(cardData);
     return (
         <>
             {
@@ -119,7 +116,7 @@ const SubmissionPage = () => {
                                 </div>
                                 <div id="sub-btn">
                                     <div id="sub-group-btn">
-                                        <button id="sub-btn-edit" style={{ display: 'flex', alignItems: 'center' }}><RiPencilFill style={{ marginRight: '10px' }} /> <Link to={`/submissionEdit/${id}`}>Edit</Link></button>
+                                        <button id="sub-btn-edit" style={{ display: 'flex', alignItems: 'center' }}><RiPencilFill style={{ marginRight: '10px' }} /> <Link style={{color:'white', textDecoration:'none'}} to={`/submissionEdit/${id}`}>Edit</Link></button>
                                         <button id="sub-btn-delete" onClick={handleClickOpen} style={{ display: 'flex', alignItems: 'center' }} ><RiDeleteBin6Fill style={{ marginRight: '10px' }} />Delete</button>
                                     </div>
                                 </div>
@@ -139,11 +136,11 @@ const SubmissionPage = () => {
                                     <p id="detail-v-date" style={{ display: 'flex', alignItems: 'center' }}><AiOutlineCalendar />{cardData.hackstart} - {cardData.hackend}</p>
                                 </div>
                                 <div id="detail-links">
-                                    <a href={cardData.github} rel="noreferrer" target="_blank">
+                                    <a style={{textDecoration:'none'}} href={cardData.github} rel="noreferrer" target="_blank">
 
                                         <button id="detail-btn-github" style={{ display: 'flex', alignItems: 'center' }}><RiGithubFill style={{ color: '#666666', fontSize: 'large', paddingRight: '3px' }} />GitHub Repository</button>
                                     </a>
-                                    <a href={cardData.link} rel="noreferrer" target="_blank">
+                                    <a style={{textDecoration:'none'}} href={cardData.link} rel="noreferrer" target="_blank">
 
                                         <button id="detail-btn-link" style={{ display: 'flex', alignItems: 'center' }}><MdLink style={{ color: '#666666', fontSize: 'large', paddingRight: '3px' }} />Other Link</button>
                                     </a>
