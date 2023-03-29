@@ -5,6 +5,7 @@ import UploadPage from './pages/UploadPage';
 import Home from "./pages/Home";
 import FavouriteSubmission from './pages/FavouriteSubmission';
 import SubmissionPage from './pages/SubmissionPage';
+import SubmissionEdit from './pages/SubmissionEdit';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/uploadSubmission" element={<UploadPage/>}/>
         <Route path="/favouriteSubmission" element={<FavouriteSubmission />} />
         <Route path='/SubmissionPage/:id' element={<SubmissionPage/>} />
+        <Route path='/SubmissionEdit/:id' element={<SubmissionEdit/>} />
       </Routes>
       </Router>
     </>

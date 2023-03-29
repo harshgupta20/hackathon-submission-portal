@@ -5,7 +5,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { MdLink } from "react-icons/md";
 import { RiPencilFill, RiDeleteBin6Fill, RiGithubFill } from "react-icons/ri";
 import image1 from "../img/image1.png";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // MUI
 import Button from '@mui/material/Button';
@@ -70,7 +70,7 @@ const SubmissionPage = () => {
                                 </div>
                                 <div id="sub-btn">
                                     <div id="sub-group-btn">
-                                        <button id="sub-btn-edit" style={{ display: 'flex', alignItems: 'center' }}><RiPencilFill style={{ marginRight: '10px' }} />Edit</button>
+                                        <button id="sub-btn-edit" style={{ display: 'flex', alignItems: 'center' }}><RiPencilFill style={{ marginRight: '10px' }} /> <Link to={`/submissionEdit/${id}`}>Edit</Link></button>
                                         <button id="sub-btn-delete" onClick={handleClickOpen} style={{ display: 'flex', alignItems: 'center' }} ><RiDeleteBin6Fill style={{ marginRight: '10px' }} />Delete</button>
                                     </div>
                                 </div>
