@@ -18,7 +18,7 @@ const CardSubmission = ({ fav }) => {
     <>
       <div id="card-list">
 
-        {
+        {getData ? <>{
           fav == "true" ? getData.filter((data) => {
             return data.fav == "true"
           }).map((data, idx) => {
@@ -41,20 +41,21 @@ const CardSubmission = ({ fav }) => {
             : getData.map((data, idx) => {
               return (
                 <Link style={{ textDecoration: 'none', color: '#000' }} to={`/submissionPage/${idx}`}>
-                <div id="card">
-                  <div id="card-body">
-                    <div id="card-title">
-                      <img id="card-image" src={data.image} alt="project_image" />
-                      <h5 id="card-h5">{data.title}</h5>
+                  <div id="card">
+                    <div id="card-body">
+                      <div id="card-title">
+                        <img id="card-image" src={data.image} alt="project_image" />
+                        <h5 id="card-h5">{data.title}</h5>
+                      </div>
+                      <div id="card-desc">{data.summary}</div>
+                      <br />
+                      <div id="card-time">{data.hackstart}</div>
                     </div>
-                    <div id="card-desc">{data.summary}</div>
-                    <br />
-                    <div id="card-time">{data.hackstart}</div>
                   </div>
-                </div>
-              </Link>
+                </Link>
               )
             })
+        }</> : <p style={{margin:'auto', marginTop:'30px'}}>No Submissons Yet !!!</p>
         }
       </div>
     </>
