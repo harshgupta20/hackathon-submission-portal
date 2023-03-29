@@ -4,6 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdLink } from "react-icons/md";
 import { RiPencilFill, RiDeleteBin6Fill, RiGithubFill } from "react-icons/ri";
+import { AiOutlineStar } from "react-icons/ai";
 import image1 from "../img/image1.png";
 import { Link, useParams } from 'react-router-dom';
 
@@ -37,6 +38,32 @@ const SubmissionPage = () => {
         data = JSON.stringify(data);
         localStorage.setItem('data', data);
         handleClose();
+
+        window.location.reload();
+    }
+
+    const addToFavourite = () => {
+
+        const temp = {
+            title: cardData.title,
+            summary: cardData.summary,
+            desc: cardData.desc,
+            image: cardData.image,
+            hackName: cardData.hackName,
+            hackstart: cardData.hackstart,
+            hackend: cardData.hackend,
+            github: cardData.github,
+            link: cardData.link,
+            fav:'true'
+        }
+
+        const arrStr = localStorage.getItem('data');
+        const arr = JSON.parse(arrStr);
+        arr.splice(id, 1, temp)
+        const arrStr2 = JSON.stringify(arr);
+        localStorage.setItem('data', arrStr2);
+
+        window.location.reload();
     }
 
 
@@ -63,7 +90,7 @@ const SubmissionPage = () => {
                                     </div>
                                     <p id="sub-title-p">{cardData.summary}</p>
                                     <div id="sub-info">
-                                        <AiFillStar id="sub-favourite" />
+                                        {cardData.fav=="false" ? <AiOutlineStar onClick={addToFavourite} id="sub-favourite" /> : <AiFillStar id="sub-favourite" />}
                                         <p>|</p>
                                         <p id="sub-date" style={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}><AiOutlineCalendar style={{ marginRight: '10px' }} />{cardData.hackstart}</p>
                                     </div>

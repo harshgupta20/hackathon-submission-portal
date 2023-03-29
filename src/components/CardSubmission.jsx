@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
-
+ 
 const CardSubmission = ({ fav }) => {
 
   const [getData, setGetData] = useState([]);
@@ -30,9 +30,9 @@ const CardSubmission = ({ fav }) => {
         {
           fav == "true" ? getData.filter((data) => {
             return data.fav == "true"
-          }).map((data) => {
+          }).map((data, idx) => {
             return (
-              <Link style={{ textDecoration: 'none', color: '#000' }} to="/SubmissionPage">
+              <Link style={{ textDecoration: 'none', color: '#000' }} to={`/submissionPage/${idx}`}>
                 <div id="card">
                   <div id="card-body">
                     <div id="card-title">
