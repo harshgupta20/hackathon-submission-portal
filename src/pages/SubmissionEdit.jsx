@@ -5,10 +5,6 @@ import Upload from "../img/Upload.png";
 
 import { useParams, useNavigate } from 'react-router-dom';
 
-// import { AddData } from '../config/FetchFirebase';
-// import { storage } from '../config/Firebase';
-// import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-
 const SubmissionEdit = () => {
 
     const [title, setTitle] = useState("")
@@ -45,29 +41,16 @@ const SubmissionEdit = () => {
         }
 
         if (title && summary && desc && image && hackName && hackstart && hackend && github && link) {
-            // console.log(title, summary, desc, image, hackName, hackend, hackstart, github, link);
-            // console.log(localStorage.getItem('data'));
            
                 const arrStr = localStorage.getItem('data');
                 const arr = JSON.parse(arrStr);
                 arr.splice(id, 1, temp)
                 const arrStr2 = JSON.stringify(arr);
                 localStorage.setItem('data', arrStr2);
-
-                
-                
+ 
             } else {
                 alert("Fields Can't be empty");
             }
-            
-            // setTitle("");
-            // setSummary("");
-            // setDesc("");
-            // setHackName("");
-            // setHackStart("");
-            // setHackEnd("");
-            // setGithub("");
-            // setLink("");
 
             document.getElementById('up-input').innerText = "";
             naviagte("/df");

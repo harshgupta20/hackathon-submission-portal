@@ -5,8 +5,6 @@ import CardSubmission from "../components/CardSubmission";
 
 const Home = () => {
 
-  // const [sub, setSub] = useState('allSub');
-
   return (
     <>
         <HeroComponent/>

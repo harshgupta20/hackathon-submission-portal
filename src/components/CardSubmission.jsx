@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/CardSubmission.css";
-
-import image1 from "../img/Image.png";
 import { Link } from 'react-router-dom';
 
 
-
-
-
- 
 const CardSubmission = ({ fav }) => {
 
   const [getData, setGetData] = useState([]);
-
-
-
 
   useEffect(() => {
     var data = localStorage.getItem('data');

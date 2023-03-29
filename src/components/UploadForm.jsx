@@ -3,10 +3,6 @@ import "../styles/UploadForm.css";
 
 import Upload from "../img/Upload.png";
 
-// import { AddData } from '../config/FetchFirebase';
-// import { storage } from '../config/Firebase';
-// import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-
 const UploadForm = () => {
 
     const [title, setTitle] = useState("")
@@ -23,7 +19,7 @@ const UploadForm = () => {
 
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         const temp = {
             title: title,
             summary: summary,
@@ -38,31 +34,22 @@ const UploadForm = () => {
         }
 
         if (title && summary && desc && image && hackName && hackstart && hackend && github && link) {
-            // console.log(title, summary, desc, image, hackName, hackend, hackstart, github, link);
-            // console.log(localStorage.getItem('data'));
             if(localStorage.getItem('data') === null){
                 const arr = [temp];
                 const arrStr = JSON.stringify(arr);
-                // console.log(arrStr);
-                // console.log("inside");
                 localStorage.setItem('data', arrStr);
-                // console.log(localStorage.getItem('data'));
-                
-            }
-            else{
+            }else{
                 const arrStr = localStorage.getItem('data');
                 const arr = JSON.parse(arrStr);
                 arr.push(temp);
                 const arrStr2 = JSON.stringify(arr);
                 localStorage.setItem('data', arrStr2);
-                // console.log("outside");
-                // console.log(localStorage.getItem('data'));
             }
-
-
         } else {
             alert("Fields Can't be empty");
         }
+
+        window.location.reload();
 
     }
     const inputFileHandle = async (e) => {
