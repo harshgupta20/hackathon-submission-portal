@@ -66,6 +66,28 @@ const SubmissionPage = () => {
         window.location.reload();
     }
 
+    const removeFavourite = () => {
+        const temp = {
+            title: cardData.title,
+            summary: cardData.summary,
+            desc: cardData.desc,
+            image: cardData.image,
+            hackName: cardData.hackName,
+            hackstart: cardData.hackstart,
+            hackend: cardData.hackend,
+            github: cardData.github,
+            link: cardData.link,
+            fav:'false'
+        }
+        const arrStr = localStorage.getItem('data');
+        const arr = JSON.parse(arrStr);
+        arr.splice(id, 1, temp)
+        const arrStr2 = JSON.stringify(arr);
+        localStorage.setItem('data', arrStr2);
+
+        window.location.reload();
+    }
+
 
     useEffect(() => {
         var data = localStorage.getItem('data');
@@ -90,7 +112,7 @@ const SubmissionPage = () => {
                                     </div>
                                     <p id="sub-title-p">{cardData.summary}</p>
                                     <div id="sub-info">
-                                        {cardData.fav=="false" ? <AiOutlineStar onClick={addToFavourite} id="sub-favourite" /> : <AiFillStar id="sub-favourite" />}
+                                        {cardData.fav=="false" ? <AiOutlineStar onClick={addToFavourite} id="sub-favourite" /> : <AiFillStar onClick={removeFavourite} id="sub-favourite" />}
                                         <p>|</p>
                                         <p id="sub-date" style={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}><AiOutlineCalendar style={{ marginRight: '10px' }} />{cardData.hackstart}</p>
                                     </div>
